@@ -1,41 +1,33 @@
 package org.gitsokolek.spacex.dragon.model;
 
-import org.gitsokolek.spacex.utilities.developmentutilities.DevUtils;
-
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
 public final class DragonId implements Serializable {
-    private final UUID value;
+	private final UUID value;
 
-	private static final String NOT_IMPLEMENTED_YET = DevUtils.notImplementedYet();
-
-
-
-    public DragonId(UUID value)
-	{
-		throw new UnsupportedOperationException(NOT_IMPLEMENTED_YET);
-    }
-
-    public static DragonId random() {
-		throw new UnsupportedOperationException(NOT_IMPLEMENTED_YET);
-    }
-
-    public UUID value() { return value; }
-
-    @Override
-    public boolean equals(Object o) {
-		throw new UnsupportedOperationException(NOT_IMPLEMENTED_YET);
-    }
-
-    @Override
-    public int hashCode() {
-		throw new UnsupportedOperationException(NOT_IMPLEMENTED_YET);
+	public DragonId(UUID value) {
+		this.value = Objects.requireNonNull(value);
 	}
 
-    @Override
-    public String toString() {
-		throw new UnsupportedOperationException(NOT_IMPLEMENTED_YET);
+	public static DragonId random() {
+		return new DragonId(UUID.randomUUID());
 	}
+
+	public UUID value() { return value; }
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof DragonId)) return false;
+		DragonId dragonId = (DragonId) o;
+		return value.equals(dragonId.value);
+	}
+
+	@Override
+	public int hashCode() { return value.hashCode(); }
+
+	@Override
+	public String toString() { return value.toString(); }
 }
