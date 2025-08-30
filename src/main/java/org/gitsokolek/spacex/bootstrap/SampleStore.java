@@ -9,28 +9,35 @@ import org.gitsokolek.spacex.mission.repo.InMemoryMissionRepository;
 import org.gitsokolek.spacex.mission.repo.MissionRepository;
 import org.gitsokolek.spacex.utilities.SpaceXCoordinator;
 
-public final class SampleStore {
-    private final MissionRepository missionRepo;
-    private final DragonRepository dragonRepo;
-    private final SpaceXCoordinator coordinator;
+public final class SampleStore
+{
+	private final MissionRepository missionRepo;
+	private final DragonRepository  dragonRepo;
+	private final SpaceXCoordinator coordinator;
 
-    private SampleStore(MissionRepository missionRepo, DragonRepository dragonRepo, SpaceXCoordinator coordinator) {
-        this.missionRepo = missionRepo;
-        this.dragonRepo = dragonRepo;
-        this.coordinator = coordinator;
-    }
 
-	public static SampleStore create() {
+
+	private SampleStore(MissionRepository missionRepo, DragonRepository dragonRepo, SpaceXCoordinator coordinator)
+	{
+		this.missionRepo = missionRepo;
+		this.dragonRepo  = dragonRepo;
+		this.coordinator = coordinator;
+	}
+
+
+
+	public static SampleStore create()
+	{
 		MissionRepository missionRepo = new InMemoryMissionRepository();
-		DragonRepository dragonRepo = new InMemoryDragonRepository();
+		DragonRepository  dragonRepo  = new InMemoryDragonRepository();
 		SpaceXCoordinator coordinator = new SpaceXCoordinator(missionRepo, dragonRepo);
 
-		Mission transit = Mission.createNew("Transit");
-		Mission luna1 = Mission.createNew("Luna1");
+		Mission transit         = Mission.createNew("Transit");
+		Mission luna1           = Mission.createNew("Luna1");
 		Mission verticalLanding = Mission.createNew("Vertical Landing");
-		Mission mars = Mission.createNew("Mars");
-		Mission luna2 = Mission.createNew("Luna2");
-		Mission doubleLanding = Mission.createNew("Double Landing");
+		Mission mars            = Mission.createNew("Mars");
+		Mission luna2           = Mission.createNew("Luna2");
+		Mission doubleLanding   = Mission.createNew("Double Landing");
 
 		missionRepo.save(transit);
 		missionRepo.save(luna1);
@@ -39,11 +46,11 @@ public final class SampleStore {
 		missionRepo.save(luna2);
 		missionRepo.save(doubleLanding);
 
-		Dragon redDragon = Dragon.createNew("Red Dragon");
-		Dragon dragonXL = Dragon.createNew("Dragon XL");
+		Dragon redDragon   = Dragon.createNew("Red Dragon");
+		Dragon dragonXL    = Dragon.createNew("Dragon XL");
 		Dragon falconHeavy = Dragon.createNew("Falcon Heavy");
-		Dragon dragon1 = Dragon.createNew("Dragon 1");
-		Dragon dragon2 = Dragon.createNew("Dragon 2");
+		Dragon dragon1     = Dragon.createNew("Dragon 1");
+		Dragon dragon2     = Dragon.createNew("Dragon 2");
 
 		dragonRepo.save(redDragon);
 		dragonRepo.save(dragonXL);
@@ -67,7 +74,23 @@ public final class SampleStore {
 	}
 
 
-	public MissionRepository missionRepo() { return missionRepo; }
-    public DragonRepository dragonRepo() { return dragonRepo; }
-    public SpaceXCoordinator coordinator() { return coordinator; }
+
+	public MissionRepository missionRepo()
+	{
+		return missionRepo;
+	}
+
+
+
+	public DragonRepository dragonRepo()
+	{
+		return dragonRepo;
+	}
+
+
+
+	public SpaceXCoordinator coordinator()
+	{
+		return coordinator;
+	}
 }
