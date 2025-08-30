@@ -5,7 +5,6 @@ import org.gitsokolek.spacex.dragon.model.DragonStatus;
 import org.gitsokolek.spacex.dragon.repo.DragonRepository;
 import org.gitsokolek.spacex.dragon.repo.InMemoryDragonRepository;
 import org.gitsokolek.spacex.mission.model.Mission;
-import org.gitsokolek.spacex.mission.model.MissionStatus;
 import org.gitsokolek.spacex.mission.repo.InMemoryMissionRepository;
 import org.gitsokolek.spacex.mission.repo.MissionRepository;
 import org.gitsokolek.spacex.utilities.SpaceXCoordinator;
