@@ -6,8 +6,8 @@ Gałęzie:
  
 3. pom.xml-update - gałąź z aktualizacją pliku pom.xml
 
-4. initial-draft - gałąź z wstępnym szkicem projektu metodą TDD (
-najpierw powstały testy i zarys metod i klas)
+4. initial_draft - gałąź z wstępnym szkicem projektu metodą TDD (
+najpierw powstały testy i zarys metod i klas). Nie została zmergowana do main.
  
 5. implementation - pisanie kodu pod testy odbita od initial_draft i zmergowana do main. 
 
