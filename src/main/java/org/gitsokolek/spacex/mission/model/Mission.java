@@ -1,7 +1,6 @@
 package org.gitsokolek.spacex.mission.model;
 
 import org.gitsokolek.spacex.dragon.model.DragonId;
-import org.gitsokolek.spacex.utilities.developmentutilities.DevUtils;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -15,90 +14,95 @@ public class Mission
 	private       MissionStatus status;
 	private final Set<DragonId> assignedDragons = new HashSet<>();
 
-	private static final String NOT_IMPLEMENTED_YET = DevUtils.notImplementedYet();
-
 
 
 	public Mission(MissionId id, String name, MissionStatus status)
 	{
-		throw new UnsupportedOperationException(NOT_IMPLEMENTED_YET);
+		this.id     = Objects.requireNonNull(id);
+		this.name   = requireNonBlank(name);
+		this.status = Objects.requireNonNull(status);
 	}
 
 
 
 	public static Mission createNew(String name)
 	{
-		throw new UnsupportedOperationException(NOT_IMPLEMENTED_YET);
+		return new Mission(MissionId.random(), requireNonBlank(name), MissionStatus.SCHEDULED);
 	}
 
 
 
 	public MissionId getId()
 	{
-		throw new UnsupportedOperationException(NOT_IMPLEMENTED_YET);
+		return id;
 	}
 
 
 
 	public String getName()
 	{
-		throw new UnsupportedOperationException(NOT_IMPLEMENTED_YET);
+		return name;
 	}
 
 
 
 	public MissionStatus getStatus()
 	{
-		throw new UnsupportedOperationException(NOT_IMPLEMENTED_YET);
+		return status;
 	}
 
 
 
 	public Set<DragonId> getAssignedDragons()
 	{
-		throw new UnsupportedOperationException(NOT_IMPLEMENTED_YET);
+		return Collections.unmodifiableSet(assignedDragons);
 	}
 
 
 
 	public void setName(String name)
 	{
-		throw new UnsupportedOperationException(NOT_IMPLEMENTED_YET);
+		this.name = requireNonBlank(name);
 	}
 
 
 
 	public void setStatus(MissionStatus status)
 	{
-		throw new UnsupportedOperationException(NOT_IMPLEMENTED_YET);
+		this.status = Objects.requireNonNull(status);
 	}
 
 
 
 	public boolean addDragon(DragonId id)
 	{
-		throw new UnsupportedOperationException(NOT_IMPLEMENTED_YET);
+		if (status == MissionStatus.ENDED)
+		{throw new IllegalStateException("Cannot assign to ENDED mission");}
+		return assignedDragons.add(Objects.requireNonNull(id));
 	}
 
 
 
 	public boolean removeDragon(DragonId id)
-
 	{
-		throw new UnsupportedOperationException(NOT_IMPLEMENTED_YET);
+		return assignedDragons.remove(Objects.requireNonNull(id));
 	}
 
 
 
 	public void clearAssignedDragons()
 	{
-		throw new UnsupportedOperationException(NOT_IMPLEMENTED_YET);
+		assignedDragons.clear();
 	}
 
 
 
 	private static String requireNonBlank(String v)
 	{
-		throw new UnsupportedOperationException(NOT_IMPLEMENTED_YET);
+		Objects.requireNonNull(v);
+		String t = v.trim();
+		if (t.isEmpty())
+		{throw new IllegalArgumentException("name must not be blank");}
+		return t;
 	}
 }
